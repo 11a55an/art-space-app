@@ -102,10 +102,7 @@ fun ArtSpaceLayout() {
 @Composable
 fun ArtSpaceGallery(image: Int, title: Int, artist: Int, year: Int){
     Column(modifier = Modifier.padding(top = 20.dp, bottom= 15.dp).fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally){
-        Box(modifier = Modifier
-            .heightIn(500.dp, 530.dp)
-            .wrapContentHeight(Alignment.CenterVertically)
-        ) {
+        Box(modifier = Modifier.heightIn(500.dp, 530.dp).wrapContentHeight(Alignment.CenterVertically)) {
             Image(painter = painterResource(image), contentDescription = stringResource(title), modifier = Modifier
                 .border(3.dp, Color.Black, RectangleShape)
                 .padding(16.dp))
@@ -156,7 +153,7 @@ fun ArtSpaceButtons(modifierButton: Modifier, clickPrev: () -> Unit, clickNext: 
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun ArtSpacePreview() {
     ArtSpaceTheme {
         ArtSpaceLayout()
     }
