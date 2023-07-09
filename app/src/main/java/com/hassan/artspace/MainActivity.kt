@@ -73,6 +73,22 @@ fun ArtSpaceLayout() {
                 year = R.string.mountain_year
             )
         }
+        2 -> {
+            ArtSpaceGallery(
+                image = R.drawable.waterfall,
+                title = R.string.waterfalls,
+                artist = R.string.waterfalls_artist,
+                year = R.string.waterfalls_year
+            )
+        }
+        3 -> {
+            ArtSpaceGallery(
+                image = R.drawable.reindeer,
+                title = R.string.reindeer,
+                artist = R.string.reindeer_artist,
+                year = R.string.reindeer_year
+            )
+        }
         else -> println("Error")
     }
     ArtSpaceButtons(modifierButton = Modifier
