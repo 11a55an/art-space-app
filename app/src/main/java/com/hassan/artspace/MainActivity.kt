@@ -10,12 +10,17 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -70,32 +75,69 @@ fun ArtSpaceLayout() {
         }
         else -> println("Error")
     }
+    ArtSpaceButtons(modifierButton = Modifier
+        .height(30.dp)
+        .width(150.dp),
+        { if (count == 1) count = 3 else count-- },
+        { if (count == 3) count = 1 else count++ }
+    )
 }
 
 @Composable
 fun ArtSpaceGallery(image: Int, title: Int, artist: Int, year: Int){
-    Column(modifier = Modifier.padding(15.dp).fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally){
-        Box(modifier = Modifier.heightIn(500.dp, 530.dp).wrapContentHeight(Alignment.CenterVertically)
+    Column(modifier = Modifier.padding(top = 20.dp, bottom= 15.dp).fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally){
+        Box(modifier = Modifier
+            .heightIn(500.dp, 530.dp)
+            .wrapContentHeight(Alignment.CenterVertically)
         ) {
-            Image(painter = painterResource(image), contentDescription = stringResource(title), modifier = Modifier.border(3.dp, Color.Black, RectangleShape).padding(16.dp))
+            Image(painter = painterResource(image), contentDescription = stringResource(title), modifier = Modifier
+                .border(3.dp, Color.Black, RectangleShape)
+                .padding(16.dp))
         }
-        Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center, modifier = Modifier.fillMaxWidth().padding(15.dp)
+        Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center, modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 50.dp, bottom = 15.dp)
         ) {
             Row {
-                Surface(modifier = Modifier.heightIn(80.dp, 300.dp).widthIn(300.dp, 380.dp), shape = RectangleShape,) {
+                Surface(modifier = Modifier
+                    .heightIn(80.dp, 300.dp)
+                    .widthIn(300.dp, 380.dp), shape = RectangleShape,) {
                     Box {
-                        Text(text = stringResource(title), fontSize = 30.sp, fontStyle = FontStyle.Italic
-                        )
+                        Text(text = stringResource(title), fontSize = 32.sp)
                     }
                     Box(modifier = Modifier.padding(top = 50.dp),) {
-                        Text(text = stringResource(artist) +" ("+ stringResource(year)+")", fontSize = 18.sp, fontWeight = FontWeight.Bold, fontStyle = FontStyle.Italic
-                        )
+                        Text(text = stringResource(artist) +" ("+ stringResource(year)+")", fontSize = 18.sp, fontWeight = FontWeight.Bold, fontStyle = FontStyle.Italic)
                     }
                 }
             }
         }
     }
 }
+
+@Composable
+fun ArtSpaceButtons(modifierButton: Modifier, clickPrev: () -> Unit, clickNext: () -> Unit
+) {
+    Column(modifier = Modifier.padding(top = 300.dp), horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Spacer(modifier = Modifier.weight(1f))
+        Row(modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = 25.dp), horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
+            Button(onClick = clickPrev, modifier = Modifier
+                .width(120.dp)
+                .height(60.dp), shape = RectangleShape) {
+                Text(text = "Previous", fontSize = 18.sp)
+            }
+            Button(onClick = clickNext, modifier = Modifier
+                .width(120.dp)
+                .height(60.dp), shape = RectangleShape) {
+                Text(text = "Next", fontSize = 18.sp)
+            }
+        }
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
