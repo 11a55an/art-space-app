@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Art Space</string>
+    <string name="mountain">Tehran Mountains</string>
+    <string name="mountain_artist">Omid Armin</string>
+    <string name="mountain_year">2023</string>
+    <string name="reindeer">Reindeer</string>
+    <string name="reindeer_artist">Marek Piwnicki</string>
+    <string name="reindeer_year">2023</string>
+    <string name="waterfalls">Waterfalls</string>
+    <string name="waterfalls_artist">Enyioma Adu</string>
+    <string name="waterfalls_year">2023</string>
 </resources>
